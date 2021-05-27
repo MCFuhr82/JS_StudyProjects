@@ -1,0 +1,44 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url(images/dark-green-texture.jpg);
+    background-repeat: no-repeat; /*para não repetir a imagem de background*/
+    background-size: cover; /* não importa o tamanho do visor, o background se ajusta automaticamente */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+h1 {
+    color: goldenrod;
+    font-size: 80px;
+}
+
+#message-el {
+    font-style: italic;
+    
+}
+
+button {
+    color: #016f32;
+    width: 180px;
+    height: 32px;
+    background-color: goldenrod;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 800;
+    border: none;
+    border-radius: 3px;
+    display: block;
+    margin: auto;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    
+}
+
+footer {
+    margin-top: 12rem;
+    font-size: 12px;
+    
+}
+
