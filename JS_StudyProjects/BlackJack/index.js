@@ -1,19 +1,38 @@
-let firstCard = getRandomCard()
-let secondCard = getRandomCard()
-let cards = [firstCard, secondCard] //array para ir adicionando cada vez que pede uma nova carta
-let sum = firstCard + secondCard
+let player = {
+    name: "Marcelo",
+    chips: 150
+}
+
+let cards = [] //array para ir adicionando cada vez que pede uma nova carta
+let sum = 0
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 let message = '' //declarando e assign para mudar conforme os else if na function renderGame
 let messageEl = document.getElementById("message-el")
 let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
 
+let playerEl = document.getElementById('player-el')
+playerEl.textContent = player.name + ": R$" + player.chips
+
 function getRandomCard() {
-    return Math.floor(Math.random() * 10) + 2
+    let newCard = Math.floor(Math.random() * 13) + 1
+    if(newCard === 1) { //mudando o valor do A(valor 1), para 11
+        return 11
+    } else if (newCard == 11 || newCard == 12 || newCard == 13) { // poderia fazer "newCard > 10" para Valete, Dama e Reis
+        return 10
+    } else {
+        return newCard
+    }
+    
 }
 
-function startGame() { //por questão de semântica, foi criado uma renderGame para aplicar no JS. A function startGame é apenas para dar o início do jogo.
+function startGame() {      //por questão de semântica, foi criado uma renderGame para aplicar no JS. A function startGame é apenas para dar o início do jogo.
+    isAlive = true
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
     renderGame()
 }
 function renderGame() {
@@ -35,10 +54,12 @@ function renderGame() {
     
 }
 
-function newCard() {
-    let anotherCard = getRandomCard()
-    sum += anotherCard //mudando o valor da variável sum, adicionando a nova carta
-    cards.push(anotherCard) // adicionando a nova carta na array cards
-    renderGame() //chamando a função novamente
 
+function newCard() {
+    if (isAlive === true && sum < 21) {//poderia setar tb isAlive === true && hasBlackJack === false
+        let anotherCard = getRandomCard()
+        sum += anotherCard //mudando o valor da variável sum, adicionando a nova carta
+        cards.push(anotherCard) // adicionando a nova carta na array cards
+        renderGame() //chamando a função novamente
+    }
 }
